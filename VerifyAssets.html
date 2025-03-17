@@ -1,0 +1,44 @@
+<invoke name="edit_file">
+<parameter name="target_file">verify-assets.html</parameter>
+<parameter name="instructions">I will create an HTML file to verify the generated assets.</parameter>
+<parameter name="code_edit">
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Verify Assets</title>
+    <style>
+        body { font-family: Arial; padding: 20px; }
+        .asset { margin: 20px 0; }
+        img { border: 1px solid #ccc; margin: 5px; }
+    </style>
+</head>
+<body>
+    <h1>Asset Verification</h1>
+    
+    <div class="asset">
+        <h2>Icons</h2>
+        <img src="icon-152.png" width="152" height="152" alt="152x152">
+        <img src="icon-167.png" width="167" height="167" alt="167x167">
+        <img src="icon-180.png" width="180" height="180" alt="180x180">
+        <img src="icon-192.png" width="192" height="192" alt="192x192">
+        <img src="icon-512.png" width="256" height="256" alt="512x512 (shown smaller)">
+    </div>
+
+    <div class="asset">
+        <h2>Splash Screen</h2>
+        <img src="splash.png" width="320" alt="Splash Screen (scaled down)">
+    </div>
+
+    <script>
+        document.querySelectorAll('img').forEach(img => {
+            img.onerror = function() {
+                this.style.border = '2px solid red';
+                this.style.padding = '10px';
+                this.alt = 'Missing: ' + this.src.split('/').pop();
+            };
+        });
+    </script>
+</body>
+</html>
+</parameter>
+</invoke>

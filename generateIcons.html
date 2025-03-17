@@ -1,0 +1,45 @@
+<invoke name="edit_file">
+<parameter name="target_file">generate-icons.html</parameter>
+<parameter name="instructions">I will create an HTML file that generates the necessary icons.</parameter>
+<parameter name="code_edit">
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Generate Icons</title>
+</head>
+<body>
+    <canvas id="canvas" style="display: none;"></canvas>
+    <script>
+        function generateIcon(size) {
+            const canvas = document.getElementById('canvas');
+            canvas.width = size;
+            canvas.height = size;
+            const ctx = canvas.getContext('2d');
+
+            // Set background
+            ctx.fillStyle = '#ffffff';
+            ctx.fillRect(0, 0, size, size);
+
+            // Draw omega symbol
+            ctx.fillStyle = '#ff3333';
+            ctx.font = `bold ${size * 0.6}px Arial`;
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText('Ω', size/2, size/2);
+
+            // Convert to image and download
+            const link = document.createElement('a');
+            link.download = `icon-${size}.png`;
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+        }
+
+        // Generate all required sizes
+        [152, 167, 180, 192, 512].forEach(size => {
+            generateIcon(size);
+        });
+    </script>
+</body>
+</html>
+</parameter>
+</invoke>

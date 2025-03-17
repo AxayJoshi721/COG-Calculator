@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="COG Calculator">
+    
+    <link rel="apple-touch-icon" href="icon-192.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="icon-152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="icon-180.png">
+    <link rel="apple-touch-icon" sizes="167x167" href="icon-167.png">
+    
+    <link rel="apple-touch-startup-image" href="splash.png">
+    
+    <link rel="manifest" href="manifest.json">
+    
+    <title>COG Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <h1>omega</h1>
+            <p>Pharmacy Group</p>
+        </div>
+        
+        <div class="calculator">
+            <h2>COG Price Calculator</h2>
+            
+            <div class="input-group">
+                <label for="wacPrice">WAC Price ($):</label>
+                <input type="number" id="wacPrice" step="0.01">
+            </div>
+
+            <div class="radio-group">
+                <input type="radio" id="invoicePrice" name="calculationType" value="invoice" checked>
+                <label for="invoicePrice">Invoice Price</label>
+                
+                <input type="radio" id="cog" name="calculationType" value="cog">
+                <label for="cog">COG</label>
+            </div>
+
+            <div class="input-group">
+                <label id="dynamicLabel">Invoice Price ($):</label>
+                <input type="number" id="secondaryInput" step="0.01">
+                <span id="helperText" class="helper-text"></span>
+            </div>
+
+            <div class="input-group">
+                <label>Result:</label>
+                <input type="text" id="result" readonly>
+            </div>
+
+            <div class="button-group">
+                <button id="calculate">Calculate</button>
+                <button id="reset">Reset Form</button>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

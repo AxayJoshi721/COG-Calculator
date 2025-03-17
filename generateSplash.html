@@ -1,0 +1,49 @@
+<invoke name="edit_file">
+<parameter name="target_file">generate-splash.html</parameter>
+<parameter name="instructions">I will create an HTML file that generates a splash screen image.</parameter>
+<parameter name="code_edit">
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Generate Splash Screen</title>
+</head>
+<body>
+    <canvas id="canvas" style="display: none;"></canvas>
+    <script>
+        function generateSplash() {
+            const canvas = document.getElementById('canvas');
+            // iPhone 12 Pro Max size (most common)
+            canvas.width = 1284;
+            canvas.height = 2778;
+            const ctx = canvas.getContext('2d');
+
+            // Set background
+            ctx.fillStyle = '#f0f8ff';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            // Draw omega symbol
+            ctx.fillStyle = '#ff3333';
+            ctx.font = 'bold 300px Arial';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText('Ω', canvas.width/2, canvas.height/2 - 100);
+
+            // Draw text
+            ctx.fillStyle = '#666666';
+            ctx.font = '48px Arial';
+            ctx.fillText('Pharmacy Group', canvas.width/2, canvas.height/2 + 100);
+
+            // Convert to image and download
+            const link = document.createElement('a');
+            link.download = 'splash.png';
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+        }
+
+        // Generate splash screen
+        generateSplash();
+    </script>
+</body>
+</html>
+</parameter>
+</invoke>
