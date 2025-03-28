@@ -42,10 +42,13 @@ document.addEventListener('DOMContentLoaded', function() {
         const calculationType = document.querySelector('input[name="calculationType"]:checked').value;
         let calculatedResult;
 
-        if (calculationType === 'invoice') {
-            // Calculate COG percentage
-            calculatedResult = 100 * ((wacValue - secondaryValue) / wacValue);
-            result.value = 'COG is Cost ' + calculatedResult.toFixed(2) + '%';
+     if (calculationType === 'invoice') {
+    // Calculate COG percentage and invert the sign based on (wacValue - secondaryValue)
+    const calculatedResult = 100 * ((wacValue - secondaryValue) / wacValue) * 
+                             (wacValue > secondaryValue ? -1 : 1);
+    
+    result.value = 'COG is Cost ' + calculatedResult.toFixed(2) + '%';
+}
         } else {
             // Calculate Invoice Price
             calculatedResult = wacValue - (wacValue * (secondaryValue / 100));
